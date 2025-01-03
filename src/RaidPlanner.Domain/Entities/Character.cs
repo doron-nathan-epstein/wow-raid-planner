@@ -4,11 +4,11 @@ namespace RaidPlanner.Domain.Entities;
 
 public class Character
 {
-  public Class Class { get; set; } = Class.Unknown;
+  public ClassIndentity Class { get; set; } = ClassIndentity.Unknown;
 
-  public Specialization MainSpec { get; set; } = Specialization.Unknown;
+  public SpecializationIdentity MainSpec { get; set; } = SpecializationIdentity.Unknown;
 
-  public Specialization OffSpec { get; set; } = Specialization.Unknown;
+  public SpecializationIdentity OffSpec { get; set; } = SpecializationIdentity.Unknown;
 
   public bool IsMain { get; set; } = false;
 }

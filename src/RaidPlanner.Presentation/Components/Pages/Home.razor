@@ -1,7 +1,95 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@inject IMediator _mediator
 
-<h1>Hello, world!</h1>
+<PageTitle>WoW Raid Planner - Home</PageTitle>
 
-Welcome to your new app.
+<div class="row">
+  <div class="col-4">
+    <PlayerView Players="_players"></PlayerView>
+  </div>
+  <div class="col-8">
+    <div class="row">
+      <div class="col-4">
+        <RolesView Players="_players"></RolesView>
+      </div>
+      <div class="col-4">
+        <MajorBuffDebuffView Players="_players"></MajorBuffDebuffView>
+      </div>
+      <div class="col-4">
+        <CooldownProfileView Players="_players"></CooldownProfileView>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <ClassView Players="_players"></ClassView>
+      </div>
+      <div class="col-4">
+        <MajorUtilitiesView Players="_players"></MajorUtilitiesView>
+      </div>
+      <div class="col-4">
+        <MinorUtilitiesView Players="_players"></MinorUtilitiesView>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+      </div>
+      <div class="col-4">
+      </div>
+      <div class="col-4">
+      </div>
+    </div>
+  </div>
+</div>
+
+@code
+{
+  private IEnumerable<Class> _classes = [];
+  private IEnumerable<Player> _players = [];
+
+  protected override async Task OnInitializedAsync()
+  {
+    _classes = await GetClassesAsync();
+    _players = GetPlayers();
+  }
+
+  private async Task<IEnumerable<Class>> GetClassesAsync()
+  {
+    return await _mediator.Send(new GetClassesQuery());
+  }
+
+  private IEnumerable<Player> GetPlayers()
+  {
+    return new List<Player>
+    {
+      new Player
+      {
+        Name = "Bean",
+        Status = PlayerStatus.Confirmed,
+        Characters = new List<Character>()
+        {
+          new Character
+          {
+            Class = Domain.Enums.ClassIndentity.Paladin,
+            MainSpec = Domain.Enums.SpecializationIdentity.Protection,
+            IsMain = true
+          }
+        }
+      },
+      new Player
+      {
+        Name = "Aequity",
+        Status = PlayerStatus.Confirmed,
+        Characters = new List<Character>()
+        {
+          new Character
+          {
+            Class = Domain.Enums.ClassIndentity.Mage,
+            MainSpec = Domain.Enums.SpecializationIdentity.Frost,
+            IsMain = true
+          }
+        }
+      }
+    };
+  }
+}

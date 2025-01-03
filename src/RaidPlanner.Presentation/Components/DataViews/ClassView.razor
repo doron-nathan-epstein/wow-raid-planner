@@ -1,0 +1,31 @@
+﻿@inject IMediator _mediator
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Classes</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var data in _dataView)
+    {
+      <tr>
+        <td class="@EnumCssUtilities.GetClassColor(data.Key.Indentity)">@data.Key.Name</td>
+        <td>@data.Value</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@code {
+  [Parameter]
+  public IEnumerable<Player> Players { get; set; }
+
+  private IDictionary<Class, int> _dataView;
+
+  protected override async Task OnInitializedAsync()
+  {
+    _dataView = await _mediator.Send(new GetPlayerClassesQuery { Players = Players });
+  }
+}

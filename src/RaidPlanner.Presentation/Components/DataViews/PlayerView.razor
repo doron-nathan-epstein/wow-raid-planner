@@ -1,0 +1,28 @@
+﻿<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Class</th>
+      <th>Main Spec</th>
+      <th>Off Spec</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var player in Players)
+    {
+      <tr>
+        <td>@player.Name</td>
+        <td><span class="badge @EnumCssUtilities.GetClassColor(player.Characters.First(character => character.IsMain).Class)">@EnumStringUtilities.GetClass(player.Characters.First(character => character.IsMain).Class)</span></td>
+        <td>@EnumStringUtilities.GetSpecialization(player.Characters.First(character => character.IsMain).MainSpec)</td>
+        <td>@EnumStringUtilities.GetSpecialization(player.Characters.First(character => character.IsMain).OffSpec)</td>
+        <td>@player.Status</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@code {
+  [Parameter]
+  public IEnumerable<Player> Players { get; set; }
+}

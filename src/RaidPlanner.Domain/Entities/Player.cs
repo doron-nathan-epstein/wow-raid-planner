@@ -49,6 +49,6 @@ public class Player
   /// An <see cref="IEnumerable{T}"/> containing <see cref="Character"/> objects that represent the player's game characters.
   /// Defaults to an empty collection if not set.
   /// </value>
-  public IEnumerable<Character> Characters { get; set; } = Enumerable.Empty<Character>();
+  public IEnumerable<Character> Characters { get; set; } = [];
 }
 

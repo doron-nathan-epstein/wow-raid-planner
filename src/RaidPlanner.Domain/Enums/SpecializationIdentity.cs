@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the available specializations for classes in the game.
 /// </summary>
-public enum Specialization
+public enum SpecializationIdentity
 {
   /// <summary>
   /// The specialization is unknown.
@@ -37,13 +37,15 @@ public enum Specialization
   /// </value>
   Arms = 3,
 
+  Assassination = 4,
+
   /// <summary>
   /// The Augmentation specialization.
   /// </summary>
   /// <value>
   /// An Evoker specialization that enhances allies' abilities and supports the team.
   /// </value>
-  Augmentation = 4,
+  Augmentation = 5,
 
   /// <summary>
   /// The Balance specialization.
@@ -51,7 +53,7 @@ public enum Specialization
   /// <value>
   /// A Druid specialization focused on ranged damage using lunar and solar magic.
   /// </value>
-  Balance = 5,
+  Balance = 6,
 
   /// <summary>
   /// The Beast Mastery specialization.
@@ -59,7 +61,7 @@ public enum Specialization
   /// <value>
   /// A Hunter specialization focused on ranged damage and commanding animal companions.
   /// </value>
-  BeastMastery = 6,
+  BeastMastery = 7,
 
   /// <summary>
   /// The Blood specialization.
@@ -67,7 +69,7 @@ public enum Specialization
   /// <value>
   /// A Death Knight specialization focused on tanking and self-healing using vampiric abilities.
   /// </value>
-  Blood = 7,
+  Blood = 8,
 
   /// <summary>
   /// The Brewmaster specialization.
@@ -75,7 +77,9 @@ public enum Specialization
   /// <value>
   /// A Monk specialization focused on tanking and mitigating damage with elusive techniques.
   /// </value>
-  Brewmaster = 8,
+  Brewmaster = 9,
+
+  Demonology = 10,
 
   /// <summary>
   /// The Destruction specialization.
@@ -83,7 +87,7 @@ public enum Specialization
   /// <value>
   /// A Warlock specialization focused on high burst damage using chaos and fire magic.
   /// </value>
-  Destruction = 9,
+  Destruction = 11,
 
   /// <summary>
   /// The Devastation specialization.
@@ -91,7 +95,7 @@ public enum Specialization
   /// <value>
   /// An Evoker specialization focused on dealing high burst damage from mid-range.
   /// </value>
-  Devastation = 10,
+  Devastation = 12,
 
   /// <summary>
   /// The Discipline specialization.
@@ -99,7 +103,7 @@ public enum Specialization
   /// <value>
   /// A Priest specialization that blends healing and shielding allies with offensive abilities.
   /// </value>
-  Discipline = 11,
+  Discipline = 13,
 
   /// <summary>
   /// The Elemental specialization.
@@ -107,7 +111,7 @@ public enum Specialization
   /// <value>
   /// A Shaman specialization focused on ranged damage using elemental magic.
   /// </value>
-  Elemental = 12,
+  Elemental = 14,
 
   /// <summary>
   /// The Enhancement specialization.
@@ -115,7 +119,7 @@ public enum Specialization
   /// <value>
   /// A Shaman specialization focused on melee damage using elemental-infused weapons.
   /// </value>
-  Enhancement = 13,
+  Enhancement = 15,
 
   /// <summary>
   /// The Feral specialization.
@@ -123,7 +127,7 @@ public enum Specialization
   /// <value>
   /// A Druid specialization focused on melee damage using shapeshifting and bleed effects.
   /// </value>
-  Feral = 14,
+  Feral = 16,
 
   /// <summary>
   /// The Fire specialization.
@@ -131,7 +135,7 @@ public enum Specialization
   /// <value>
   /// A Mage specialization focused on dealing damage with fire magic and high burst potential.
   /// </value>
-  Fire = 15,
+  Fire = 17,
 
   /// <summary>
   /// The Frost specialization.
@@ -139,7 +143,7 @@ public enum Specialization
   /// <value>
   /// A specialization available to Mages and Death Knights, focusing on frost magic or melee damage with icy abilities.
   /// </value>
-  Frost = 16,
+  Frost = 18,
 
   /// <summary>
   /// The Fury specialization.
@@ -147,7 +151,7 @@ public enum Specialization
   /// <value>
   /// A Warrior specialization focused on high-paced melee damage with dual-wielded weapons.
   /// </value>
-  Fury = 17,
+  Fury = 19,
 
   /// <summary>
   /// The Guardian specialization.
@@ -155,7 +159,7 @@ public enum Specialization
   /// <value>
   /// A Druid specialization focused on tanking and absorbing damage with high durability.
   /// </value>
-  Guardian = 18,
+  Guardian = 20,
 
   /// <summary>
   /// The Havoc specialization.
@@ -163,7 +167,7 @@ public enum Specialization
   /// <value>
   /// A Demon Hunter specialization focused on high-mobility melee damage.
   /// </value>
-  Havoc = 19,
+  Havoc = 21,
 
   /// <summary>
   /// The Holy specialization.
@@ -171,7 +175,7 @@ public enum Specialization
   /// <value>
   /// A specialization available to Priests and Paladins, focusing on healing and supporting allies.
   /// </value>
-  Holy = 20,
+  Holy = 22,
 
   /// <summary>
   /// The Marksmanship specialization.
@@ -179,7 +183,7 @@ public enum Specialization
   /// <value>
   /// A Hunter specialization focused on precise ranged damage without relying heavily on pets.
   /// </value>
-  Marksmanship = 21,
+  Marksmanship = 23,
 
   /// <summary>
   /// The Mistweaver specialization.
@@ -187,7 +191,7 @@ public enum Specialization
   /// <value>
   /// A Monk specialization focused on healing and supporting allies with chi-based techniques.
   /// </value>
-  Mistweaver = 22,
+  Mistweaver = 24,
 
   /// <summary>
   /// The Outlaw specialization.
@@ -195,7 +199,7 @@ public enum Specialization
   /// <value>
   /// A Rogue specialization focused on melee damage and swashbuckling combat techniques.
   /// </value>
-  Outlaw = 23,
+  Outlaw = 25,
 
   /// <summary>
   /// The Preservation specialization.
@@ -203,7 +207,7 @@ public enum Specialization
   /// <value>
   /// An Evoker specialization focused on healing and mitigating damage for allies.
   /// </value>
-  Preservation = 24,
+  Preservation = 26,
 
   /// <summary>
   /// The Protection specialization.
@@ -211,7 +215,7 @@ public enum Specialization
   /// <value>
   /// A specialization available to Paladins and Warriors, focusing on tanking and absorbing damage.
   /// </value>
-  Protection = 25,
+  Protection = 27,
 
   /// <summary>
   /// The Restoration specialization.
@@ -219,7 +223,7 @@ public enum Specialization
   /// <value>
   /// A specialization available to Druids and Shamans, focusing on healing and sustaining allies.
   /// </value>
-  Restoration = 26,
+  Restoration = 28,
 
   /// <summary>
   /// The Retribution specialization.
@@ -227,7 +231,7 @@ public enum Specialization
   /// <value>
   /// A Paladin specialization focused on melee damage with holy magic.
   /// </value>
-  Retribution = 27,
+  Retribution = 29,
 
   /// <summary>
   /// The Shadow specialization.
@@ -235,7 +239,7 @@ public enum Specialization
   /// <value>
   /// A Priest specialization focused on dealing ranged damage with shadow magic.
   /// </value>
-  Shadow = 28,
+  Shadow = 30,
 
   /// <summary>
   /// The Subtlety specialization.
@@ -243,7 +247,7 @@ public enum Specialization
   /// <value>
   /// A Rogue specialization focused on stealth and precision melee damage.
   /// </value>
-  Subtlety = 29,
+  Subtlety = 31,
 
   /// <summary>
   /// The Survival specialization.
@@ -251,7 +255,9 @@ public enum Specialization
   /// <value>
   /// A Hunter specialization focused on melee damage and traps.
   /// </value>
-  Survival = 30,
+  Survival = 32,
+
+  Unholy = 33,
 
   /// <summary>
   /// The Vengeance specialization.
@@ -259,7 +265,7 @@ public enum Specialization
   /// <value>
   /// A Demon Hunter specialization focused on tanking and self-sustain through damage mitigation.
   /// </value>
-  Vengeance = 31,
+  Vengeance = 34,
 
   /// <summary>
   /// The Windwalker specialization.
@@ -267,5 +273,5 @@ public enum Specialization
   /// <value>
   /// A Monk specialization focused on high-mobility melee damage using martial arts techniques.
   /// </value>
-  Windwalker = 32
+  Windwalker = 35,
 }

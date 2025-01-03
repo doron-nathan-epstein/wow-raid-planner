@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the available character classes in the game.
 /// </summary>
-public enum Class
+public enum ClassIndentity
 {
   /// <summary>
   /// The character's class is unknown.

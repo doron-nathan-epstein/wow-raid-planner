@@ -9,6 +9,8 @@ builder.Services
   .AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddBlazorBootstrap();
+
 builder.Services
   .AddApplication()
   .AddInfrastructure();

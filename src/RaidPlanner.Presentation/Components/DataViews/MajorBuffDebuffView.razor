@@ -1,0 +1,32 @@
+﻿@inject IMediator _mediator
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Major Buffs/Debuffs</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var data in _dataView)
+    {
+      <tr>
+        <td>@data.Key</td>
+        <td>@data.Value</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@code {
+  [Parameter]
+  public IEnumerable<Player> Players { get; set; }
+
+  private IDictionary<string, int> _dataView;
+
+  protected override async Task OnInitializedAsync()
+  {
+    _dataView = await _mediator.Send(new GetPlayerRolesGetPlayerMajorBuffDebuffsQuery { Players = Players });
+  }
+}
+

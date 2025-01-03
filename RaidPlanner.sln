@@ -8,11 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaidPlanner.Domain", "src\RaidPlanner.Domain\RaidPlanner.Domain.csproj", "{FBDBB396-97B8-4BF8-B031-44BE31D6F70F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaidPlanner.Domain", "src\RaidPlanner.Domain\RaidPlanner.Domain.csproj", "{FBDBB396-97B8-4BF8-B031-44BE31D6F70F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaidPlanner.Application", "src\RaidPlanner.Application\RaidPlanner.Application.csproj", "{FFDF77FA-A1ED-444A-B26E-23EADFA63499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaidPlanner.Application", "src\RaidPlanner.Application\RaidPlanner.Application.csproj", "{FFDF77FA-A1ED-444A-B26E-23EADFA63499}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaidPlanner.Infrastructure", "src\RaidPlanner.Infrastructure\RaidPlanner.Infrastructure.csproj", "{90829E86-1AE9-45F5-8B29-38674C27F278}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaidPlanner.Infrastructure", "src\RaidPlanner.Infrastructure\RaidPlanner.Infrastructure.csproj", "{90829E86-1AE9-45F5-8B29-38674C27F278}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaidPlanner.Presentation", "src\RaidPlanner.Presentation\RaidPlanner.Presentation.csproj", "{68928613-1356-4620-8CC1-324EAF9F8ABC}"
 EndProject
