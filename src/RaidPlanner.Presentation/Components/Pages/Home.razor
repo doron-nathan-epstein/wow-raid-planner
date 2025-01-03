@@ -10,17 +10,17 @@
   </div>
   <div class="col-8">
     <div class="row">
-      <div class="col-4"><RolesView Players="_players"></RolesView></div>
-      <div class="col-4"><MajorBuffDebuffView Players="_players"></MajorBuffDebuffView></div>
-      <div class="col-4"><CooldownProfileView Players="_players"></CooldownProfileView></div>
+      <div class="col-4"><RolesView Players="_playerDto"></RolesView></div>
+      <div class="col-4"><MajorBuffDebuffView Players="_playerDto"></MajorBuffDebuffView></div>
+      <div class="col-4"><CooldownProfileView Players="_playerDto"></CooldownProfileView></div>
     </div>
     <div class="row">
       <div class="col-4"><ClassView Players="_playerDto"></ClassView></div>
-      <div class="col-4"><MajorUtilitiesView Players="_players"></MajorUtilitiesView></div>
-      <div class="col-4"><MinorUtilitiesView Players="_players"></MinorUtilitiesView></div>
+      <div class="col-4"><MajorUtilitiesView Players="_playerDto"></MajorUtilitiesView></div>
+      <div class="col-4"><MinorUtilitiesView Players="_playerDto"></MinorUtilitiesView></div>
     </div>
     <div class="row">
-      <div class="col-4"><TierTokenView Players="_players"></TierTokenView></div>
+      <div class="col-4"><TierTokenView Players="_playerDto"></TierTokenView></div>
       <div class="col-4"></div>
       <div class="col-4"></div>
     </div>
@@ -35,49 +35,9 @@
 
   protected override async Task OnInitializedAsync()
   {
-    _classes = await GetClassesAsync();
-    _players = GetPlayers();
+    _classes = await _mediator.Send(new GetClassesQuery());
+    _players = await _mediator.Send(new GetPlayersQuery());
     _playerDto = GetSimplePlayers(_players);
-  }
-
-  private async Task<IEnumerable<Class>> GetClassesAsync()
-  {
-    return await _mediator.Send(new GetClassesQuery());
-  }
-
-  private IEnumerable<Player> GetPlayers()
-  {
-    return new List<Player>
-    {
-      new Player
-      {
-        Name = "Bean",
-        Status = PlayerStatus.Confirmed,
-        Characters = new List<Character>()
-        {
-          new Character
-          {
-            Class = Domain.Enums.ClassIndentity.Paladin,
-            MainSpec = Domain.Enums.SpecializationIdentity.Protection,
-            IsMain = true
-          }
-        }
-      },
-      new Player
-      {
-        Name = "Aequity",
-        Status = PlayerStatus.Confirmed,
-        Characters = new List<Character>()
-        {
-          new Character
-          {
-            Class = Domain.Enums.ClassIndentity.Mage,
-            MainSpec = Domain.Enums.SpecializationIdentity.Frost,
-            IsMain = true
-          }
-        }
-      }
-    };
   }
 
   private IEnumerable<SimplePlayerDto> GetSimplePlayers(IEnumerable<Player> players)

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RaidPlanner.Application.Players.Queries.Common;
 using RaidPlanner.Domain.Entities;
 using RaidPlanner.Domain.Enums;
 
@@ -6,7 +7,7 @@ namespace RaidPlanner.Application.Players.Queries.GetPlayerTierTokens;
 
 public record GetPlayerTierTokensQuery : IRequest<IDictionary<string, int>>
 {
-  public IEnumerable<Player> Players { get; set; } = [];
+  public IEnumerable<SimplePlayerDto> Players { get; set; } = [];
 }
 
 internal class GetPlayerTierTokensQueryHandler : IRequestHandler<GetPlayerTierTokensQuery, IDictionary<string, int>>
@@ -17,37 +18,33 @@ internal class GetPlayerTierTokensQueryHandler : IRequestHandler<GetPlayerTierTo
   {
     var result = new Dictionary<string, int>
     {
-      { "Zenith", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-          (
-            character.Class == ClassIndentity.Evoker || 
-            character.Class == ClassIndentity.Monk || 
-            character.Class == ClassIndentity.Rogue || 
-            character.Class == ClassIndentity.Warrior
-          ))) 
+      { "Zenith", request.Players.Count(player => 
+          player.Class == ClassIndentity.Evoker ||
+          player.Class == ClassIndentity.Monk ||
+          player.Class == ClassIndentity.Rogue ||
+          player.Class == ClassIndentity.Warrior
+        ) 
       },
 
-      { "Dreadful", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-        (
-          character.Class == ClassIndentity.DeathKnight || 
-          character.Class == ClassIndentity.DemonHunter || 
-          character.Class == ClassIndentity.Warlock
-        ))) 
+      { "Dreadful", request.Players.Count(player => 
+          player.Class == ClassIndentity.DeathKnight ||
+          player.Class == ClassIndentity.DemonHunter ||
+          player.Class == ClassIndentity.Warlock
+        )
       },
 
-      { "Mystic", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-        (
-          character.Class == ClassIndentity.Druid || 
-          character.Class == ClassIndentity.Hunter || 
-          character.Class == ClassIndentity.Mage
-        )))
+      { "Mystic", request.Players.Count(player => 
+          player.Class == ClassIndentity.Druid ||
+          player.Class == ClassIndentity.Hunter ||
+          player.Class == ClassIndentity.Mage
+        )
       },
 
-      { "Venerated", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-        (
-          character.Class == ClassIndentity.Paladin || 
-          character.Class == ClassIndentity.Priest || 
-          character.Class == ClassIndentity.Shaman
-        ))) 
+      { "Venerated", request.Players.Count(player => 
+          player.Class == ClassIndentity.Paladin ||
+          player.Class == ClassIndentity.Priest ||
+          player.Class == ClassIndentity.Shaman
+        )
       },
     };
 

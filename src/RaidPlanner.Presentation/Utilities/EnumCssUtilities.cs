@@ -11,6 +11,6 @@ internal static class EnumCssUtilities
       return string.Empty;
     }
 
-    return $"text-bg-{EnumStringUtilities.GetClass(classIndentity).ToLower()}";
+    return $"text-bg-{classIndentity.ToString().ToLower()}";
   }
 }

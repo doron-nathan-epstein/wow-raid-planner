@@ -6,15 +6,22 @@ internal static class EnumStringUtilities
 {
   public static string GetClass(ClassIndentity classIndentity)
   {
-    return classIndentity == ClassIndentity.Unknown
-      ? string.Empty
-      : classIndentity.ToString();
+    return classIndentity switch
+    {
+      ClassIndentity.Unknown => string.Empty,
+      ClassIndentity.DeathKnight => "Death Knight",
+      ClassIndentity.DemonHunter => "Demon Hunter",
+      _ => classIndentity.ToString(),
+    };
   }
 
   public static string GetSpecialization(SpecializationIdentity specializationIndentity)
   {
-    return specializationIndentity == SpecializationIdentity.Unknown
-      ? string.Empty
-      : specializationIndentity.ToString();
+    return specializationIndentity switch
+    {
+      SpecializationIdentity.Unknown => string.Empty,
+      SpecializationIdentity.BeastMastery => "Beast Mastery",
+      _ => specializationIndentity.ToString(),
+    };
   }
 }

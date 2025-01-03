@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RaidPlanner.Application.Players.Queries.Common;
 using RaidPlanner.Domain.Entities;
 using RaidPlanner.Domain.Enums;
 
@@ -6,7 +7,7 @@ namespace RaidPlanner.Application.Players.Queries.GetPlayerMinorUtilities;
 
 public record GetPlayerMinorUtilitiesQuery : IRequest<IDictionary<string, int>>
 {
-  public IEnumerable<Player> Players { get; set; } = [];
+  public IEnumerable<SimplePlayerDto> Players { get; set; } = [];
 }
 
 internal class GetPlayerMinorUtilitiesQueryHandler : IRequestHandler<GetPlayerMinorUtilitiesQuery, IDictionary<string, int>>
@@ -17,64 +18,58 @@ internal class GetPlayerMinorUtilitiesQueryHandler : IRequestHandler<GetPlayerMi
   {
     var result = new Dictionary<string, int>
     {
-      { "Knock Up/Back", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-        (
-            character.Class == ClassIndentity.Druid ||  
-            character.Class == ClassIndentity.Evoker || 
-            character.Class == ClassIndentity.Hunter ||
-            character.Class == ClassIndentity.Mage ||
-            character.Class == ClassIndentity.Monk ||
-            character.Class == ClassIndentity.Shaman
-          ))) 
+      { "Knock Up/Back", request.Players.Count(player => 
+          player.Class == ClassIndentity.Druid ||
+          player.Class == ClassIndentity.Evoker ||
+          player.Class == ClassIndentity.Hunter ||
+          player.Class == ClassIndentity.Mage ||
+          player.Class == ClassIndentity.Monk ||
+          player.Class == ClassIndentity.Shaman
+        )
       },
 
-      { "Mortal Strike", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-          (
-            character.Class == ClassIndentity.Rogue || 
-            (character.Class == ClassIndentity.Warrior && character.MainSpec == SpecializationIdentity.Arms) ||
-            (character.Class == ClassIndentity.DemonHunter && character.MainSpec == SpecializationIdentity.Havoc)
-          )))  
+      { "Mortal Strike", request.Players.Count(player =>
+          (player.Class == ClassIndentity.DemonHunter && player.Spec == SpecializationIdentity.Havoc) ||
+          player.Class == ClassIndentity.Rogue || 
+          (player.Class == ClassIndentity.Warrior && player.Spec == SpecializationIdentity.Arms)
+        )
       },
       
-      { "Soothe", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-          (
-            character.Class == ClassIndentity.Druid || 
-            character.Class == ClassIndentity.Evoker ||
-            character.Class == ClassIndentity.Hunter ||  
-            character.Class == ClassIndentity.Monk
-          ))) 
+      { "Soothe", request.Players.Count(player =>
+          player.Class == ClassIndentity.Druid ||
+          player.Class == ClassIndentity.Evoker ||
+          player.Class == ClassIndentity.Hunter ||
+          player.Class == ClassIndentity.Monk
+        )
       },
 
-      { "Purge", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-          (
-            character.Class == ClassIndentity.Hunter || 
-            character.Class == ClassIndentity.Mage ||
-            character.Class == ClassIndentity.Priest ||  
-            character.Class == ClassIndentity.Shaman
-          ))) 
+      { "Purge", request.Players.Count(player => 
+          player.Class == ClassIndentity.Hunter ||
+          player.Class == ClassIndentity.Mage ||
+          player.Class == ClassIndentity.Priest ||
+          player.Class == ClassIndentity.Shaman
+        )
       },
 
-      { "Power Infusion", request.Players.Count(player => player.Characters.Any(character => character.IsMain && character.Class == ClassIndentity.Priest)) },
+      { "Power Infusion", request.Players.Count(player => player.Class == ClassIndentity.Priest) },
 
-      { "Extra Dam to Shields", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-          (
-            character.Class == ClassIndentity.Evoker || 
-            character.Class == ClassIndentity.Warrior
-          ))) 
+      { "Extra Dam to Shields", request.Players.Count(player => 
+          player.Class == ClassIndentity.Evoker ||
+          player.Class == ClassIndentity.Warrior
+        )
       },
 
-      { "Cheat Death", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
-          (
-            (character.Class == ClassIndentity.DeathKnight && character.MainSpec == SpecializationIdentity.Blood) || 
-            (character.Class == ClassIndentity.DemonHunter && character.MainSpec == SpecializationIdentity.Vengeance) || 
-            (character.Class == ClassIndentity.Evoker && character.MainSpec == SpecializationIdentity.Augmentation) ||           
-            (character.Class == ClassIndentity.Mage && character.MainSpec == SpecializationIdentity.Fire) || 
-            (character.Class == ClassIndentity.Priest && character.MainSpec == SpecializationIdentity.Holy) || 
-            character.Class == ClassIndentity.Rogue
-          ))) 
+      { "Cheat Death", request.Players.Count(player => 
+          (player.Class == ClassIndentity.DeathKnight && player.Spec == SpecializationIdentity.Blood) || 
+          (player.Class == ClassIndentity.DemonHunter && player.Spec == SpecializationIdentity.Vengeance) || 
+          (player.Class == ClassIndentity.Evoker && player.Spec == SpecializationIdentity.Augmentation) ||           
+          (player.Class == ClassIndentity.Mage && player.Spec == SpecializationIdentity.Fire) || 
+          (player.Class == ClassIndentity.Priest && player.Spec == SpecializationIdentity.Holy) ||
+          player.Class == ClassIndentity.Rogue
+        ) 
       },
 
-      { "Blessing of Spellwarding", request.Players.Count(player => player.Characters.Any(character => character.IsMain && character.Class == ClassIndentity.Paladin && character.MainSpec == SpecializationIdentity.Protection)) },
+      { "Blessing of Spellwarding", request.Players.Count(player => player.Class == ClassIndentity.Paladin && player.Spec == SpecializationIdentity.Protection) },
     };
 
     return await Task.FromResult(result);
