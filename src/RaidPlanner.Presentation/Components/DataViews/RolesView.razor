@@ -1,10 +1,14 @@
 ﻿@inject IMediator _mediator
 
 <table class="table table-sm">
-  <thead>
+  <colgroup>
+    <col class="col-md-10">
+    <col class="col-md-2">
+  </colgroup>
+  <thead class="table-dark">
     <tr>
       <th>Roles</th>
-      <th>Count</th>
+      <th class="text-center">Count</th>
     </tr>
   </thead>
   <tbody>
@@ -12,7 +16,7 @@
     {
       <tr>
         <td>@data.Key</td>
-        <td>@data.Value</td>
+        <td class="text-center">@data.Value</td>
       </tr>
     }
   </tbody>
