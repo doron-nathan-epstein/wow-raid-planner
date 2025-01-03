@@ -15,9 +15,4 @@
     <ProjectReference Include="..\RaidPlanner.Domain\RaidPlanner.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Players\Queries\GetPlayerMinorUtilities\" />
-    <Folder Include="Players\Queries\GetPlayerTierTokens\" />
-  </ItemGroup>
-
 </Project>

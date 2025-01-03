@@ -3,12 +3,12 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th>Utility</th>
+      <th>Tier Token</th>
       <th>Count</th>
     </tr>
   </thead>
   <tbody>
-    @foreach (var data in _dataView)
+    @foreach(var data in _dataView)
     {
       <tr>
         <td>@data.Key</td>
@@ -26,7 +26,6 @@
 
   protected override async Task OnInitializedAsync()
   {
-    _dataView = await _mediator.Send(new GetPlayerMinorUtilitiesQuery { Players = Players });
+    _dataView = await _mediator.Send(new GetPlayerTierTokensQuery{ Players = Players });
   }
 }
-

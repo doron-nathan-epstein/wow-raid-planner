@@ -17,32 +17,41 @@ internal class GetPlayerCooldownProfilesQueryHandler : IRequestHandler<GetPlayer
   {
     var result = new Dictionary<string, int>
     {
-      { "1 and 1.5 min", request.Players.Count(player => player.Characters.Any(character => character.IsMain 
-        && (character.MainSpec == SpecializationIdentity.Enhancement || 
-        character.MainSpec == SpecializationIdentity.Fury || 
-        character.MainSpec == SpecializationIdentity.Retribution))) },
+      { "1 and 1.5 min", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
+          (
+            character.MainSpec == SpecializationIdentity.Enhancement || 
+            character.MainSpec == SpecializationIdentity.Fury || 
+            character.MainSpec == SpecializationIdentity.Retribution
+          ))) 
+      },
 
-      { "2 min", request.Players.Count(player => player.Characters.Any(character => character.IsMain 
-        && (character.MainSpec == SpecializationIdentity.Affliction || 
-        character.MainSpec == SpecializationIdentity.Assassination || 
-        character.MainSpec == SpecializationIdentity.Augmentation || 
-        character.MainSpec == SpecializationIdentity.BeastMastery || 
-        character.MainSpec == SpecializationIdentity.Demonology || 
-        character.MainSpec == SpecializationIdentity.Destruction || 
-        character.MainSpec == SpecializationIdentity.Devastation || 
-        character.MainSpec == SpecializationIdentity.Feral || 
-        character.MainSpec == SpecializationIdentity.Fire || 
-        character.MainSpec == SpecializationIdentity.Havoc || 
-        character.MainSpec == SpecializationIdentity.Marksmanship || 
-        character.MainSpec == SpecializationIdentity.Shadow || 
-        character.MainSpec == SpecializationIdentity.Subtlety ||
-        character.MainSpec == SpecializationIdentity.Survival || 
-        character.MainSpec == SpecializationIdentity.Windwalker))) },
+      { "2 min", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
+          (
+            character.MainSpec == SpecializationIdentity.Affliction || 
+            character.MainSpec == SpecializationIdentity.Assassination || 
+            character.MainSpec == SpecializationIdentity.Augmentation || 
+            character.MainSpec == SpecializationIdentity.BeastMastery || 
+            character.MainSpec == SpecializationIdentity.Demonology || 
+            character.MainSpec == SpecializationIdentity.Destruction || 
+            character.MainSpec == SpecializationIdentity.Devastation || 
+            character.MainSpec == SpecializationIdentity.Feral || 
+            character.MainSpec == SpecializationIdentity.Fire || 
+            character.MainSpec == SpecializationIdentity.Havoc || 
+            character.MainSpec == SpecializationIdentity.Marksmanship || 
+            character.MainSpec == SpecializationIdentity.Shadow || 
+            character.MainSpec == SpecializationIdentity.Subtlety ||
+            character.MainSpec == SpecializationIdentity.Survival || 
+            character.MainSpec == SpecializationIdentity.Windwalker
+          ))) 
+      },
 
-      { "3 min", request.Players.Count(player => player.Characters.Any(character => character.IsMain 
-        && (character.MainSpec == SpecializationIdentity.Balance || 
-        character.MainSpec == SpecializationIdentity.Unholy || 
-        character.MainSpec == SpecializationIdentity.Retribution))) },
+      { "3 min", request.Players.Count(player => player.Characters.Any(character => character.IsMain && 
+        (
+          character.MainSpec == SpecializationIdentity.Balance || 
+          character.MainSpec == SpecializationIdentity.Unholy || 
+          character.MainSpec == SpecializationIdentity.Retribution
+        ))) 
+      },
     };
 
     return await Task.FromResult(result);

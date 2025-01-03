@@ -10,34 +10,19 @@
   </div>
   <div class="col-8">
     <div class="row">
-      <div class="col-4">
-        <RolesView Players="_players"></RolesView>
-      </div>
-      <div class="col-4">
-        <MajorBuffDebuffView Players="_players"></MajorBuffDebuffView>
-      </div>
-      <div class="col-4">
-        <CooldownProfileView Players="_players"></CooldownProfileView>
-      </div>
+      <div class="col-4"><RolesView Players="_players"></RolesView></div>
+      <div class="col-4"><MajorBuffDebuffView Players="_players"></MajorBuffDebuffView></div>
+      <div class="col-4"><CooldownProfileView Players="_players"></CooldownProfileView></div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <ClassView Players="_players"></ClassView>
-      </div>
-      <div class="col-4">
-        <MajorUtilitiesView Players="_players"></MajorUtilitiesView>
-      </div>
-      <div class="col-4">
-        <MinorUtilitiesView Players="_players"></MinorUtilitiesView>
-      </div>
+      <div class="col-4"><ClassView Players="_playerDto"></ClassView></div>
+      <div class="col-4"><MajorUtilitiesView Players="_players"></MajorUtilitiesView></div>
+      <div class="col-4"><MinorUtilitiesView Players="_players"></MinorUtilitiesView></div>
     </div>
     <div class="row">
-      <div class="col-4">
-      </div>
-      <div class="col-4">
-      </div>
-      <div class="col-4">
-      </div>
+      <div class="col-4"><TierTokenView Players="_players"></TierTokenView></div>
+      <div class="col-4"></div>
+      <div class="col-4"></div>
     </div>
   </div>
 </div>
@@ -46,11 +31,13 @@
 {
   private IEnumerable<Class> _classes = [];
   private IEnumerable<Player> _players = [];
+  private IEnumerable<SimplePlayerDto> _playerDto = [];
 
   protected override async Task OnInitializedAsync()
   {
     _classes = await GetClassesAsync();
     _players = GetPlayers();
+    _playerDto = GetSimplePlayers(_players);
   }
 
   private async Task<IEnumerable<Class>> GetClassesAsync()
@@ -91,5 +78,25 @@
         }
       }
     };
+  }
+
+  private IEnumerable<SimplePlayerDto> GetSimplePlayers(IEnumerable<Player> players)
+  {
+    var result = new List<SimplePlayerDto>();
+
+    foreach (var player in players)
+    {
+      var playerClass = player.Characters.First(character => character.IsMain);
+
+      result.Add(new SimplePlayerDto
+        {
+          Name = player.Name,
+          Class = playerClass.Class,
+          Spec = playerClass.MainSpec,
+          Role = _classes.First(c => c.Indentity == playerClass.Class).Specializations.First(s => s.Indentity == playerClass.MainSpec).Role
+        });
+    }
+
+    return result;
   }
 }
